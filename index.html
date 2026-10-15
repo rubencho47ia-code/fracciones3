@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fraccionarios · Grado 3°</title>
+<style>
+:root{--bg:#fff8ee;--card:#fff;--tx:#2b2a33;--mu:#6b6878;--ac:#f97316;--fill:#fbbf24;--ok:#16a34a;--bad:#dc2626;--bd:#f1dfc4;--sel:#ffe7c7;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1a22;--card:#272430;--tx:#f3f0fa;--mu:#a9a5b8;--fill:#f59e0b;--bd:#3a3646;--sel:#4a3520;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1c1a22;--card:#272430;--tx:#f3f0fa;--mu:#a9a5b8;--fill:#f59e0b;--bd:#3a3646;--sel:#4a3520;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.5 "Trebuchet MS",Verdana,system-ui,sans-serif}
+header{padding:16px;text-align:center}
+h1{margin:0;font-size:1.6rem}
+h2{margin:.2rem 0 .6rem}
+.name{margin-top:8px}
+input[type=text]{font:inherit;padding:8px 12px;border:2px solid var(--bd);border-radius:12px;background:var(--card);color:var(--tx);width:min(320px,90%)}
+input[type=number]{font:inherit;width:64px;padding:6px;border:2px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx);text-align:center}
+nav{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:0 8px 8px}
+nav button,.btn{font:inherit;border:2px solid var(--ac);background:var(--card);color:var(--tx);border-radius:999px;padding:8px 14px;cursor:pointer}
+nav button.on,.btn{background:var(--ac);color:#fff;font-weight:700}
+main{max-width:860px;margin:auto;padding:8px 14px 40px}
+section{display:none}section.on{display:block}
+.card{background:var(--card);border:2px solid var(--bd);border-radius:18px;padding:14px;margin:12px 0}
+.mu{color:var(--mu);font-size:.9rem}
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.1;font-weight:700;margin:0 3px}
+.fr span:last-child{border-top:2px solid currentColor;padding-top:1px}
+.fg{max-width:100%}.fg.c{width:130px}.fg.b{width:240px}
+.fg rect,.fg path{stroke:var(--tx);stroke-width:2}
+.cl{cursor:pointer}
+.nl{width:100%;max-width:420px;color:var(--tx)}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.o{font:inherit;color:var(--tx);background:var(--card);border:2px solid var(--bd);border-radius:12px;padding:8px 14px;cursor:pointer;min-width:60px}
+.o.s{border-color:var(--ac);background:var(--sel)}
+.o .fg.c{width:80px}.o .fg.b{width:130px}
+.fb{margin-top:8px;font-weight:700}
+.good{color:var(--ok)}.badc{color:var(--bad)}
+.tag{display:inline-block;font-size:.75rem;background:var(--sel);border-radius:8px;padding:1px 8px;margin-left:6px}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid var(--bd);padding:5px 8px;text-align:center}
+.bar{height:14px;background:var(--bd);border-radius:8px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ok)}
+.big{font-size:3rem;font-weight:800;color:var(--ac)}
+@media print{nav,header .name,.noprint{display:none}}
+</style>
+</head>
+<body>
+<header>
+<h1>🍕 Fraccionarios · Grado 3°</h1>
+<div class="mu">Conceptos básicos, representación, identificación y recta numérica</div>
+<div class="name"><input type="text" id="nm" placeholder="✏️ Escribe tu nombre aquí" maxlength="50"></div>
+</header>
+<nav id="nav"></nav>
+<main>
+<section id="s0">
+<div class="card"><h2>1. ¿Qué es una fracción?</h2>
+<p>Una <b>fracción</b> es una parte de un entero que se dividió en <b>partes iguales</b>. Si una pizza se corta en 4 trozos iguales y comes 3, comiste <span class="fr"><span>3</span><span>4</span></span> de la pizza.</p>
+<div id="t1"></div>
+<p><b>Numerador</b> (arriba): cuántas partes tomamos o pintamos.<br><b>Denominador</b> (abajo): en cuántas partes iguales se dividió el entero.</p></div>
+<div class="card"><h2>2. Representación</h2>
+<p>Representar es dibujar o pintar la fracción. Las partes siempre deben ser del mismo tamaño. Podemos usar círculos o barras.</p>
+<div id="t2"></div>
+<p class="mu">Ejemplo: <span class="fr"><span>2</span><span>5</span></span> → dividimos en 5 partes iguales y pintamos 2.</p></div>
+<div class="card"><h2>3. Identificación: ¿cómo se lee?</h2>
+<table><tr><th>Fracción</th><th>Se lee</th></tr>
+<tr><td><span class="fr"><span>1</span><span>2</span></span></td><td>un medio</td></tr>
+<tr><td><span class="fr"><span>1</span><span>3</span></span></td><td>un tercio</td></tr>
+<tr><td><span class="fr"><span>1</span><span>4</span></span></td><td>un cuarto</td></tr>
+<tr><td><span class="fr"><span>3</span><span>5</span></span></td><td>tres quintos</td></tr>
+<tr><td><span class="fr"><span>5</span><span>6</span></span></td><td>cinco sextos</td></tr>
+<tr><td><span class="fr"><span>3</span><span>8</span></span></td><td>tres octavos</td></tr></table>
+<p>Para identificarla: cuenta todas las partes (denominador) y luego las pintadas (numerador).</p></div>
+<div class="card"><h2>4. Ubicación en la recta numérica</h2>
+<p>Entre el 0 y el 1 hay un entero. Se divide en partes iguales y se cuentan los saltos desde el 0. Aquí el punto rojo está en <span class="fr"><span>3</span><span>4</span></span>: 4 partes y 3 saltos.</p>
+<div id="t4"></div></div>
+</section>
+<section id="s1"><h2>Taller de práctica</h2><p class="mu">Aquí practicas sin nota. Puedes intentar las veces que quieras.</p><div id="tl"></div></section>
+<section id="s2"><h2>Evaluación (20 preguntas)</h2><p class="mu" id="cnt"></p><div id="ev"></div></section>
+<section id="s3"><h2>Ejercicios interactivos (20 actividades)</h2><p class="mu" id="cx"></p><div id="ex"></div></section>
+<section id="s4"><h2>Resultados</h2>
+<div class="card"><p>Cuando termines, genera tu nota y el resumen.</p><button class="btn" id="gen">📊 Generar nota</button></div>
+<div id="res"></div></section>
+</main>
+<script>
+const C=(n,d)=>`<span class="fr"><span>${n}</span><span>${d}</span></span>`;
+const CATS={C:'Conceptos básicos',I:'Identificación',R:'Representación',U:'Ubicación en la recta'};
+const TIP={C:'Repasa la teoría: el numerador (arriba) son las partes que tomo y el denominador (abajo) las partes iguales en que se divide el entero. Explícalo con tus palabras usando una pizza o una barra de chocolate.',
+I:'Antes de escribir la fracción, cuenta primero todas las partes iguales (denominador) y luego las pintadas (numerador). Practica con figuras de tu cuaderno.',
+R:'Dibuja el entero, divídelo en partes iguales según el denominador y pinta tantas partes como diga el numerador. Practica con papel doblado o plastilina.',
+U:'Entre 0 y 1 cuenta las partes iguales y avanza tantos saltos desde el 0 como diga el numerador. Dibuja rectas en tu cuaderno y marca los saltos con el dedo.'};
+function fig(d,p,sh,clk){let s='';
+ if(sh==='c'){s='<svg viewBox="0 0 100 100" class="fg c">';
+  for(let i=0;i<d;i++){const a=i*2*Math.PI/d-Math.PI/2,b=(i+1)*2*Math.PI/d-Math.PI/2;
+   s+=`<path ${clk?`class="cl" data-i="${i}"`:''} fill="${p(i)?'var(--fill)':'var(--card)'}" d="M50 50L${50+45*Math.cos(a)} ${50+45*Math.sin(a)}A45 45 0 0 1 ${50+45*Math.cos(b)} ${50+45*Math.sin(b)}Z"/>`}
+ }else{s='<svg viewBox="0 0 204 44" class="fg b">';const w=200/d;
+  for(let i=0;i<d;i++)s+=`<rect ${clk?`class="cl" data-i="${i}"`:''} x="${2+i*w}" y="2" width="${w}" height="40" fill="${p(i)?'var(--fill)':'var(--card)'}"/>`}
+ return s+'</svg>'}
+function nl(d,mark,sel,clk){const x=i=>20+i*280/d;
+ let s='<svg viewBox="0 0 320 80" class="nl"><line x1="20" y1="40" x2="300" y2="40" stroke="currentColor" stroke-width="3"/>';
+ for(let i=0;i<=d;i++){s+=`<line x1="${x(i)}" y1="32" x2="${x(i)}" y2="48" stroke="currentColor" stroke-width="2"/>`;
+  if(clk&&i>0&&i<d)s+=`<circle class="cl" data-i="${i}" cx="${x(i)}" cy="40" r="11" fill="${sel===i?'var(--ac)':'transparent'}" stroke="var(--ac)" stroke-width="2"/>`}
+ s+=`<text x="20" y="70" text-anchor="middle" fill="currentColor" font-size="16">0</text><text x="300" y="70" text-anchor="middle" fill="currentColor" font-size="16">1</text>`;
+ if(mark!=null)s+=`<circle cx="${x(mark)}" cy="40" r="9" fill="var(--bad)"/>`;
+ return s+'</svg>'}
+document.getElementById('t1').innerHTML=fig(4,i=>i<3,'c')+' '+fig(4,i=>i<3,'b');
+document.getElementById('t2').innerHTML=fig(5,i=>i<2,'c')+' '+fig(5,i=>i<2,'b');
+document.getElementById('t4').innerHTML=nl(4,3);
+const dd=(c,l)=>{const s=new Set([c]),o=[];for(const x of l)if(!s.has(x)&&o.length<3){s.add(x);o.push(x)}return o};
+const place=(c,l,k)=>{const a=dd(c,l),p=k%4;a.splice(p,0,c);return{o:a,a:p}};
+// ---- Evaluación
+const EV=[];
+[['¿Cómo se llama el número de abajo en una fracción?',['Numerador','Denominador','Entero','Resta'],1],
+['El numerador nos dice:',['En cuántas partes se divide el entero','Cuántas partes tomamos','El color de la figura','El tamaño de la hoja'],1],
+['¿Cuál de estas es una fracción?',['2 + 7','27','2/7','7 · 2'],2],
+['Para hablar de fracciones, las partes del entero deben ser:',['Iguales','De colores','Grandes','Pocas'],0],
+['Una pizza se partió en 8 partes iguales y Ana comió 3. ¿Qué fracción comió?',[C(3,8),C(8,3),C(3,5),C(5,8)],0]
+].forEach(q=>EV.push({c:'C',q:q[0],o:q[1],a:q[2]}));
+[[1,2,'b'],[3,4,'c'],[2,5,'b'],[5,6,'c'],[3,8,'b']].forEach(([n,d,sh],k)=>{
+ const r=place(C(n,d),[C(d-n,d),C(n,d+1),C(n+1,d),C(d,n)],k);
+ EV.push({c:'I',q:'¿Qué fracción representa la parte pintada?',f:fig(d,i=>i<n,sh),o:r.o,a:r.a})});
+[[1,4],[2,3],[3,6],[4,5],[5,8]].forEach(([n,d],k)=>{
+ const sh=k%2?'c':'b',cand=[n+1,n-1,n+2,n-2].filter(x=>x>=0&&x<=d&&x!==n);
+ const f=m=>fig(d,i=>i<m,sh),s=new Set(),l=[];cand.forEach(x=>{if(!s.has(x)&&l.length<3){s.add(x);l.push(f(x))}});
+ const p=k%4;l.splice(p,0,f(n));
+ EV.push({c:'R',q:`¿Qué figura representa ${C(n,d)}?`,o:l,a:p})});
+[[1,4],[3,5],[2,3],[5,8],[4,6]].forEach(([k0,d],k)=>{
+ const r=place(C(k0,d),[C(k0+1,d),C(k0-1,d),C(k0,d+1),C(d-k0,d)],k+1);
+ EV.push({c:'U',q:'¿Qué fracción marca el punto rojo en la recta?',f:nl(d,k0),o:r.o,a:r.a})});
+const evA={};
+const ev=document.getElementById('ev');
+EV.forEach((q,i)=>{const d=document.createElement('div');d.className='card';
+ d.innerHTML=`<b>${i+1}.</b> ${q.q}<span class="tag">${CATS[q.c]}</span><div>${q.f||''}</div><div class="opts">${q.o.map((o,j)=>`<button class="o" data-j="${j}">${o}</button>`).join('')}</div>`;
+ d.querySelectorAll('.o').forEach(b=>b.onclick=()=>{evA[i]=+b.dataset.j;d.querySelectorAll('.o').forEach(x=>x.classList.toggle('s',x===b));
+  document.getElementById('cnt').textContent=`Respondidas: ${Object.keys(evA).length} de 20`});
+ ev.appendChild(d)});
+document.getElementById('cnt').textContent='Respondidas: 0 de 20';
+// ---- Ejercicios
+const EX=[];
+[[1,2,'b'],[3,4,'c'],[2,3,'b'],[4,6,'c'],[5,8,'b'],[3,5,'c']].forEach(([n,d,sh])=>EX.push({t:'paint',c:'R',n,d,sh,q:`Pinta ${C(n,d)} de la figura.`,h:`Pinta ${n} de las ${d} partes iguales.`}));
+[[2,3,'c'],[1,4,'b'],[5,6,'c'],[3,5,'b'],[7,8,'c']].forEach(([n,d,sh])=>EX.push({t:'write',c:'I',n,d,sh,q:'Escribe la fracción que representa la parte pintada.',h:`Hay ${d} partes en total y ${n} pintadas: ${n}/${d}.`}));
+[[1,4],[2,5],[1,2],[5,8],[3,4]].forEach(([n,d])=>EX.push({t:'line',c:'U',n,d,q:`Haz clic en el punto de la recta donde está ${C(n,d)}.`,h:`Cuenta ${n} salto(s) desde el 0 en una recta dividida en ${d} partes.`}));
+[['En la fracción 4/7, ¿cuál es el numerador?',['4','7','11','3'],0,'El numerador es el número de arriba.'],
+['En la fracción 5/9, ¿cuál es el denominador?',['5','14','9','4'],2,'El denominador es el número de abajo.'],
+['Divido un entero en 6 partes iguales y tomo 1. Escribo:',['6/1','1/6','1/5','5/6'],1,'Tomo 1 (arriba) de 6 partes (abajo).'],
+['Una recta del 0 al 1 tiene 4 partes iguales. El punto en la tercera marca es:',['3/4','4/3','1/3','3/1'],0,'Tres saltos de cuatro partes: 3/4.']
+].forEach(([q,o,a,h])=>EX.push({t:'concept',c:'C',q,o,a,h}));
+const exR={};
+function build(it,graded,key,box){
+ let sel=new Set(),pick=null,done=false;
+ const body=document.createElement('div'),fb=document.createElement('div'),btn=document.createElement('button');
+ fb.className='fb';btn.className='btn';btn.textContent='Revisar';box.append(body,btn,fb);
+ const render=()=>{
+  if(it.t==='paint'){body.innerHTML=`<p>${it.q}</p>`+fig(it.d,i=>sel.has(i),it.sh,!done);
+   body.querySelectorAll('.cl').forEach(e=>e.onclick=()=>{const i=+e.dataset.i;sel.has(i)?sel.delete(i):sel.add(i);render()})}
+  else if(it.t==='line'){body.innerHTML=`<p>${it.q}</p>`+nl(it.d,null,pick,!done);
+   body.querySelectorAll('.cl').forEach(e=>e.onclick=()=>{pick=+e.dataset.i;render()})}
+  else if(it.t==='concept'){body.innerHTML=`<p>${it.q}</p><div class="opts">${it.o.map((o,j)=>`<button class="o ${pick===j?'s':''}" data-j="${j}">${o}</button>`).join('')}</div>`;
+   if(!done)body.querySelectorAll('.o').forEach(e=>e.onclick=()=>{pick=+e.dataset.j;render()})}
+  else body.innerHTML=`<p>${it.q}</p>${fig(it.d,i=>i<it.n,it.sh)}<p>Numerador <input type="number" min="0" max="20" class="a"> Denominador <input type="number" min="1" max="20" class="b"></p>`};
+ render();
+ btn.onclick=()=>{if(done)return;let ok;
+  if(it.t==='paint')ok=sel.size===it.n;else if(it.t==='line')ok=pick===it.n;else if(it.t==='concept')ok=pick===it.a;
+  else ok=+body.querySelector('.a').value===it.n&&+body.querySelector('.b').value===it.d;
+  fb.className='fb '+(ok?'good':'badc');fb.textContent=ok?'✅ ¡Muy bien!':'❌ Pista: '+it.h;
+  if(graded){done=true;btn.disabled=true;exR[key]=ok;if(it.t!=='write')render();
+   document.getElementById('cx').textContent=`Actividades revisadas: ${Object.keys(exR).length} de 20`}};
+}
+const ex=document.getElementById('ex');
+EX.forEach((it,i)=>{const d=document.createElement('div');d.className='card';d.innerHTML=`<b>Actividad ${i+1}</b><span class="tag">${CATS[it.c]}</span>`;build(it,true,i,d);ex.appendChild(d)});
+document.getElementById('cx').textContent='Actividades revisadas: 0 de 20';
+// ---- Taller
+const TL=[
+{t:'paint',c:'R',n:2,d:4,sh:'c',q:`Pinta ${C(2,4)}. Hay 4 partes iguales; pinta 2.`,h:'Pinta 2 de las 4 partes.'},
+{t:'write',c:'I',n:3,d:4,sh:'b',q:'Cuenta las partes pintadas y las totales. Escribe la fracción.',h:'3 pintadas de 4 partes: 3/4.'},
+{t:'line',c:'U',n:2,d:3,q:`Ubica ${C(2,3)} en la recta: da 2 saltos desde el 0.`,h:'Son 3 partes; avanza 2 saltos.'},
+{t:'concept',c:'C',q:'En 3/8, el 8 es el…',o:['Numerador','Denominador','Entero'],a:1,h:'El número de abajo es el denominador.'},
+{t:'concept',c:'C',q:'¿Las partes de una fracción deben ser…?',o:['Iguales','Diferentes'],a:0,h:'Siempre deben ser partes iguales.'},
+{t:'paint',c:'R',n:1,d:3,sh:'b',q:`Pinta ${C(1,3)} de la barra.`,h:'Pinta solo 1 de las 3 partes.'}];
+const tl=document.getElementById('tl');
+TL.forEach((it,i)=>{const d=document.createElement('div');d.className='card';d.innerHTML=`<b>Ejercicio ${i+1}</b>`;build(it,false,i,d);tl.appendChild(d)});
+// ---- Navegación
+const NAMES=['📖 Teoría','✏️ Taller','📝 Evaluación','🎮 Ejercicios','📊 Resultados'];
+const nav=document.getElementById('nav');
+NAMES.forEach((n,i)=>{const b=document.createElement('button');b.textContent=n;b.onclick=()=>go(i);nav.appendChild(b)});
+function go(i){document.querySelectorAll('section').forEach((s,j)=>s.classList.toggle('on',i===j));nav.querySelectorAll('button').forEach((b,j)=>b.classList.toggle('on',i===j));scrollTo(0,0)}
+go(0);
+// ---- Resultados
+document.getElementById('gen').onclick=()=>{
+ const nm=document.getElementById('nm').value.trim();
+ if(!nm){alert('Escribe tu nombre arriba antes de generar la nota.');scrollTo(0,0);document.getElementById('nm').focus();return}
+ const st={};Object.keys(CATS).forEach(k=>st[k]={t:0,ok:0});
+ EV.forEach((q,i)=>{st[q.c].t++;if(evA[i]===q.a)st[q.c].ok++});
+ EX.forEach((q,i)=>{st[q.c].t++;if(exR[i])st[q.c].ok++});
+ const ok=Object.values(st).reduce((a,s)=>a+s.ok,0),nota=Math.max(1,Math.round(ok/40*50)/10);
+ const pend=(20-Object.keys(evA).length)+(20-Object.keys(exR).length);
+ const lvl=nota>=4.6?'Superior':nota>=4?'Alto':nota>=3?'Básico':'Bajo';
+ let h=`<div class="card" style="text-align:center"><div>Estudiante: <b>${nm.replace(/[<>&]/g,'')}</b></div><div class="big">${nota.toFixed(1)}</div><div>Desempeño <b>${lvl}</b> · ${ok} de 40 aciertos</div>${pend?`<p class="mu">Quedaron ${pend} preguntas o actividades sin responder; cuentan como incorrectas.</p>`:''}</div><div class="card"><h2>Resumen por tema</h2>`;
+ const dif=[];
+ Object.entries(st).forEach(([k,s])=>{const p=Math.round(s.ok/s.t*100);
+  h+=`<p><b>${CATS[k]}</b>: ${s.ok}/${s.t} (${p}%)</p><div class="bar"><i style="width:${p}%"></i></div>`;
+  if(p<80)dif.push([k,p])});
+ h+='</div><div class="card"><h2>Dificultades y sugerencias</h2>';
+ if(!dif.length)h+='<p class="good">🌟 ¡Excelente! No se observan dificultades. Sigue practicando con fracciones de la vida diaria.</p>';
+ dif.forEach(([k,p])=>h+=`<p><b>${CATS[k]}</b> (${p}%) — ${p<60?'<span class="badc">Necesita refuerzo.</span>':'Casi lo logras, repasa un poco.'}<br>💡 ${TIP[k]}</p>`);
+ h+='</div><button class="btn noprint" onclick="print()">🖨️ Imprimir resultados</button>';
+ document.getElementById('res').innerHTML=h;
+};
+</script>
+</body>
+</html>
